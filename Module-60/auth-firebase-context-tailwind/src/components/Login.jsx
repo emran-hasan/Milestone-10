@@ -1,28 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { authContext } from '../Providers/AuthProvider';
-import { Result } from 'postcss';
 
 const Login = () => {
-
-    const {signIn} = useContext(authContext)
-
     const handleLogin = event =>{
         event.preventDefault();
-        const form =event.target;
         const email =event.target.email.value
         const password =event.target.password.value
         console.log(email, password);
-
-        signIn(email,password)
-        .then(result =>{
-            const loggedUser = result.user 
-            console.log(loggedUser);
-            form.reset('')
-        })
-        .catch(error=>{
-            console.log(error.message);
-        })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
